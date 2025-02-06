@@ -1,8 +1,7 @@
 function solution(s) {
-  return !s.toUpperCase().includes("P") && !s.toUpperCase().includes("Y")
-    ? true
-    : (s.toUpperCase().match(/P/g) || []).length ===
-      (s.toUpperCase().match(/Y/g) || []).length
-    ? true
-    : false;
+  let UpperCase = s.toUpperCase();
+  let pSplitLt = UpperCase.split("P").length - 1;
+  let ySplitLt = UpperCase.split("Y").length - 1;
+
+  return pSplitLt === ySplitLt ? true : false;
 }
