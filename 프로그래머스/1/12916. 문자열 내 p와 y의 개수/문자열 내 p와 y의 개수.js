@@ -1,7 +1,7 @@
-function solution(s) {
-  let UpperCase = s.toUpperCase();
-  let pSplitLt = UpperCase.split("P").length - 1;
-  let ySplitLt = UpperCase.split("Y").length - 1;
-
-  return pSplitLt === ySplitLt ? true : false;
+function solution(s){
+    return [...s.toLowerCase()].reduce((acc, cur) => {
+        if(cur === 'p') return acc + 1;
+        else if(cur === 'y') return acc - 1;
+        return acc;
+    }, 0) === 0;
 }
