@@ -1,27 +1,23 @@
-function gcd(a, b) {
-  return b === 0 ? a : gcd(b, a % b);
-}
-
 function solution(numer1, denom1, numer2, denom2) {
-  var answer = [];
-  var a = denom1;
-  var b = denom2;
-  var c = numer1;
-  var d = numer2;
-  var totalNumer = 0;
-  var totalDenom = 0;
-  while (a !== b) {
-    a < b ? ((a += denom1), (c += numer1)) : ((b += denom2), (d += numer2));
+  // 두 분수의 분모를 같게 만들어야 하므로
+  var commonDenom = denom1 * denom2;
+
+  // 분모를 같게 만들기 위해 분자도 비례적으로 수정
+  var commonNumer = numer1 * denom2 + numer2 * denom1;
+
+  // 최대공약수(GCD)를 구하기 위해 Euclidean Algorithm 사용
+  function gcd(a, b) {
+    while (b) {
+      var temp = b;
+      b = a % b;
+      a = temp;
+    }
+    return a;
   }
 
-  if (a === b) {
-    totalNumer = c + d;
-    totalDenom = a;
+  // 최대공약수로 분자와 분모를 나누어 약분
+  var gcdResult = gcd(commonNumer, commonDenom);
 
-    var result = gcd(totalNumer, totalDenom);
-
-    answer.push(totalNumer / result, totalDenom / result);
-  }
-
-  return answer;
+  // 약분한 결과 반환
+  return [commonNumer / gcdResult, commonDenom / gcdResult];
 }
