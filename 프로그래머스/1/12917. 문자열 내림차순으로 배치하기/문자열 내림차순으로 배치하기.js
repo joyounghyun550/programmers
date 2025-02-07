@@ -1,4 +1,4 @@
 function solution(s) {
-    let result = [...s].sort().reverse();
-    return result.join("");
+    let result = [...s].sort().reverse().join("");
+    return result
 }
