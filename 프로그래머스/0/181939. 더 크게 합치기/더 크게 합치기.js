@@ -1,4 +1,3 @@
 function solution(a, b) {
-    const result = +(String(a) + String(b)) > +(String(b) + String(a)) ? +(String(a) + String(b)) : +(String(b) + String(a));
-    return result;
+    return Math.max(Number(`${a}${b}`), Number(`${b}${a}`))
 }
